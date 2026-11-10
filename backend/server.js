@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import chatRoutes from "./routes/chat.js";
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cors());
@@ -27,6 +27,7 @@ const connectDB = async () => {
         });
     } catch (err) {
         console.log("Database Connection Failed:", err.message);
+        process.exit(1);
     }
 };
 

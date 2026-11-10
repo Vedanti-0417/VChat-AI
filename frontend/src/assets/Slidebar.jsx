@@ -3,6 +3,7 @@ import "./Slidebar.css";
 import { useContext, useEffect } from "react";
 import { MyContext } from "./MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
+import { API_BASE_URL } from "../config.js";
 
 function Sidebar() {
     const {
@@ -20,7 +21,9 @@ function Sidebar() {
     // Fetch all chat threads
     const getAllThreads = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/thread");
+            const response = await fetch(
+                `${API_BASE_URL}/api/thread`
+            );
 
             if (!response.ok) {
                 throw new Error("Failed to fetch threads");
@@ -58,7 +61,7 @@ function Sidebar() {
 
         try {
             const response = await fetch(
-                `http://localhost:8080/api/thread/${newThreadId}`
+                `${API_BASE_URL}/api/thread/${newThreadId}`
             );
 
             if (!response.ok) {
@@ -81,7 +84,7 @@ function Sidebar() {
     const deleteThread = async (threadId) => {
         try {
             const response = await fetch(
-                `http://localhost:8080/api/thread/${threadId}`,
+                `${API_BASE_URL}/api/thread/${threadId}`,
                 { method: "DELETE" }
             );
 

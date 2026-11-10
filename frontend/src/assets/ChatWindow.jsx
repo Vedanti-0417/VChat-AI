@@ -5,6 +5,7 @@ import { MyContext } from "./MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
 import { v1 as uuidv1 } from "uuid";
+import { API_BASE_URL } from "../config.js";
 
 function ChatWindow() {
     const {
@@ -52,7 +53,7 @@ function ChatWindow() {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/chat",
+                `${API_BASE_URL}/api/chat`,
                 {
                     method: "POST",
                     headers: {
