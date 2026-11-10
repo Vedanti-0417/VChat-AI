@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "./MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
 import { API_BASE_URL } from "../config.js";
+import blacklogo from "./blacklogo.png";
 
 function Sidebar() {
     const {
@@ -89,7 +90,7 @@ function Sidebar() {
             );
 
             if (!response.ok) {
-                throw new Error("Failed to delete chat");
+                throw new Error("Failed to delete thread");
             }
 
             const res = await response.json();
@@ -116,7 +117,7 @@ function Sidebar() {
             {/* New Chat Button */}
             <button onClick={createNewChat}>
                 <img
-                    src="/src/assets/blacklogo.png"
+                    src={blacklogo}
                     alt="gpt logo"
                     className="logo"
                 />
